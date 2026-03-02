@@ -120,6 +120,11 @@
                         </div>
 
                         <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Quantos imóveis e veículos compõem a herança? <span class="text-red-500">*</span></label>
+                            <input type="number" id="qtdBens" required min="1" placeholder="Ex: 2" class="w-full px-4 py-3 bg-white border border-gray-300 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                        </div>
+
+                        <div class="space-y-1">
                             <label class="text-xs font-bold text-gray-500 uppercase">Estado dos Bens (UF)</label>
                             <select id="estado" class="w-full px-4 py-3 bg-white border border-gray-300 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none">
                                 <option value="SC" selected>Santa Catarina (SC)</option>
@@ -186,7 +191,7 @@
                     </div>
 
                     <div class="mb-6 text-sm text-gray-500 bg-gray-50 p-4 rounded border border-gray-200">
-                        <strong>Importante:</strong> Esta é apenas uma projeção matemática de custos e prazos baseada nas leis atuais. É essencial uma análise técnica por um advogado para confirmação exata dos valores e verificação de eventuais exceções e detalhes legais. Os prazos informados representam uma média estimada, e as circunstâncias de cada caso podem alterar significativamente as previsões de duração do processo.
+                        Importante: Esta é apenas uma projeção matemática de custos e prazos baseada nas leis atuais. É essencial uma análise técnica por um advogado para confirmação exata dos valores e verificação de eventuais exceções e detalhes legais. Os prazos informados representam uma média estimada, e as circunstâncias de cada caso podem alterar significativamente as previsões de duração do processo.
                     </div>
 
                     <div id="alertaPrazo" class="mb-8 p-5 rounded flex items-start space-x-4 border-l-4">
@@ -240,7 +245,7 @@
                                 </div>
                                 <div class="flex justify-between border-b border-gray-200 pb-2">
                                     <span class="text-gray-600">Prazo Médio Estimado:</span>
-                                    <span class="font-medium text-gray-800">Aprox. 3 meses</span>
+                                    <span class="font-medium text-gray-800">3 a 6 meses</span>
                                 </div>
                                 <div class="flex justify-between items-center pt-2">
                                     <span class="font-bold text-primary text-base">CUSTO TOTAL ESTIMADO:</span>
@@ -317,6 +322,12 @@
                     <div id="boxViaExplicacao" class="hidden bg-gray-50 p-6 rounded mb-8 border border-gray-200">
                         <h4 class="font-bold text-primary mb-2 text-sm uppercase">Análise do Caminho Adequado</h4>
                         <p id="resViaExplicacao" class="text-sm text-gray-700"></p>
+                    </div>
+
+                    <div id="avisoEstimativaFinal" class="hidden bg-white border border-gray-200 shadow-sm p-6 rounded mb-8 text-center text-sm text-gray-600">
+                        <i class="fas fa-balance-scale text-gold text-2xl mb-3 block"></i>
+                        <p>A projeção acima trata-se de uma estimativa baseada em valores médios. Os valores exatos dependem de uma análise técnica detalhada e da verificação de eventuais exceções ou detalhes legais aplicáveis ao caso.</p>
+                        <p class="mt-2 font-medium text-primary">Entre em contato pelo formulário abaixo para uma análise preliminar sem custos.</p>
                     </div>
 
                 </div>
@@ -491,7 +502,7 @@
         </button>
     </div>
 
-    <a href="#simulador" id="floatingBtn" class="fixed bottom-6 right-6 z-[9000] bg-gold text-white shadow-2xl rounded-full px-5 py-4 flex items-center justify-center hover:bg-gold-hover transition-all duration-300 opacity-0 translate-y-10 pointer-events-none" title="Acessar Simulador">
+    <a href="#simulador" id="floatingBtn" class="fixed bottom-24 right-6 z-[9000] bg-gold text-white shadow-2xl rounded-full px-5 py-4 flex items-center justify-center hover:bg-gold-hover transition-all duration-300 opacity-0 translate-y-10 pointer-events-none" title="Acessar Simulador">
         <i class="fas fa-calculator text-xl"></i>
         <span class="hidden md:inline font-bold tracking-wide text-sm ml-2">Simular Custos</span>
     </a>
@@ -528,6 +539,7 @@
         function calcularSimulacao() {
             const dataObito = document.getElementById('dataObito').value;
             const valorTotal = parseFloat(document.getElementById('valorPatrimonio').value);
+            const qtdBensInput = document.getElementById('qtdBens').value;
             const uf = document.getElementById('estado').value;
             
             const herdeirosInput = document.getElementById('qtdHerdeiros').value;
@@ -536,8 +548,8 @@
             const temMenor = document.getElementById('temMenor').value;
             const temConsenso = document.getElementById('temConsenso').value;
 
-            if (!dataObito || !valorTotal) {
-                alert("Por favor, preencha a Data do Falecimento e o Valor Total da Herança.");
+            if (!dataObito || !valorTotal || !qtdBensInput) {
+                alert("Por favor, preencha a Data do Falecimento, o Valor Total da Herança e a Quantidade de Bens.");
                 return;
             }
 
@@ -566,7 +578,7 @@
                 document.getElementById('alertaRegime').classList.add('hidden');
             }
 
-            // Prazos e Alertas Adaptados
+            // Prazos e Alertas
             const diasRestantes = 60 - Math.ceil(Math.abs(new Date() - new Date(dataObito)) / (1000 * 60 * 60 * 24));
             let alertaEl = document.getElementById('alertaPrazo');
             let iconEl = document.getElementById('alertaIcon');
@@ -627,12 +639,17 @@
             let aliquotaEfetivaNum = patrimonioPartilhavel > 0 ? (itcmdTotal / patrimonioPartilhavel) * 100 : 0;
             let textoAliquota = aliquotaEfetivaNum.toFixed(2).replace('.', ',') + '%';
 
-            // Custas Emolumentos Inventário SC (Circular 643/2025)
-            let custasExtra = 0;
-            if (valorTotal <= 93295.70) custasExtra = 708.91;
-            else if (valorTotal <= 198501.48) custasExtra = 1417.83;
-            else if (valorTotal <= 529337.26) custasExtra = 2835.73;
-            else custasExtra = 4253.50; // Teto SC para Inventários extrajudiciais
+            // Custas Emolumentos Inventário SC (Circular 643/2025) calculado por BEM MÉDIO
+            let numBens = parseInt(qtdBensInput) || 1;
+            let valorMedioBem = valorTotal / numBens;
+            let custoPorBem = 0;
+
+            if (valorMedioBem <= 93295.70) custoPorBem = 708.91;
+            else if (valorMedioBem <= 198501.48) custoPorBem = 1417.83;
+            else if (valorMedioBem <= 529337.26) custoPorBem = 2835.73;
+            else custoPorBem = 4253.50; // Teto SC para Inventários extrajudiciais
+
+            let custasExtra = custoPorBem * numBens;
 
             // Custas Judiciais TJSC Atualizado
             let custasJud = valorTotal * 0.028;
@@ -681,6 +698,7 @@
             let avisoC = document.getElementById('avisoCartorio');
             let expl = document.getElementById('boxViaExplicacao');
             let txtExpl = document.getElementById('resViaExplicacao');
+            let avisoFinal = document.getElementById('avisoEstimativaFinal');
 
             avisoC.className = "text-[10px] uppercase font-bold text-amber-600 mt-1 hidden";
             bgE.className = "absolute inset-0 opacity-10 pointer-events-none transition-colors";
@@ -688,6 +706,7 @@
 
             if (completos) {
                 expl.classList.remove('hidden');
+                avisoFinal.classList.remove('hidden');
                 
                 if (temMenor === 'sim') {
                     bgE.classList.add('bg-yellow-400'); bgJ.classList.add('bg-green-400');
@@ -703,6 +722,7 @@
                 }
             } else {
                 expl.classList.add('hidden');
+                avisoFinal.classList.add('hidden');
                 bgE.classList.add('bg-gray-200'); bgJ.classList.add('bg-gray-200');
             }
 
