@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventário em Santa Catarina | Advogados Especialistas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --primary: #1F2937; /* Cinza chumbo escuro / Elegante */
+            --gold: #A38A5E; /* Dourado sóbrio */
+            --gold-hover: #8A734C;
+            --bg-light: #F9FAFB;
+        }
+        
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-light); color: #374151; }
+        
+        .bg-primary { background-color: var(--primary); }
+        .text-primary { color: var(--primary); }
+        .text-gold { color: var(--gold); }
+        .bg-gold { background-color: var(--gold); }
+        .hover-bg-gold:hover { background-color: var(--gold-hover); }
+        .border-gold { border-color: var(--gold); }
+        
+        .file-upload-wrapper { position: relative; overflow: hidden; display: inline-block; width: 100%; }
+        .file-upload-wrapper input[type=file] { font-size: 100px; position: absolute; left: 0; top: 0; opacity: 0; cursor: pointer; height: 100%; }
+        
+        .fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Banner de Privacidade */
+        #lgpd-banner {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background-color: #111827; color: #fff; padding: 16px 24px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 9999; box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="antialiased pb-20 scroll-smooth">
+
+    <header class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3 tracking-widest uppercase text-sm font-semibold text-primary">
+                <span class="w-2 h-2 rounded-full bg-gold"></span>
+                <span>Direito das Sucessões</span>
+            </div>
+            <a href="#simulador" class="hidden md:inline-block border border-gray-300 text-gray-700 px-5 py-2 rounded font-medium hover:bg-gray-100 transition text-sm">
+                Projeção de Custos do Inventário
+            </a>
+        </div>
+    </header>
+
+    <section class="relative py-24 lg:py-32 overflow-hidden bg-primary">
+        <div class="absolute inset-0 opacity-15 bg-[url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/90 to-transparent"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                Advogados Especialistas em Inventários em Santa Catarina.
+            </h1>
+            <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto font-normal leading-relaxed">
+                Atuamos com agilidade e segurança na regularização do patrimônio da sua família. Experiência dedicada na condução de inventários judiciais e em cartório.
+            </p>
+            <a href="#simulador" class="bg-gold text-white px-8 py-4 rounded font-semibold text-base tracking-wide hover-bg-gold transition inline-flex items-center shadow-lg">
+                Faça uma projeção de custos gratuitamente
+            </a>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80" alt="Documentos de Inventário" class="relative z-10 rounded shadow-md w-full object-cover h-[400px]">
+                    <div class="absolute inset-0 bg-gray-100 translate-x-4 translate-y-4 rounded -z-10"></div>
+                </div>
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6">Especialistas em Direito das Sucessões</h2>
+                    <p class="text-gray-600 mb-5 leading-relaxed">
+                        Somos especializados na condução de inventários judiciais e extrajudiciais. Nossa experiência abrange desde patrimônios simples até composições complexas envolvendo múltiplos imóveis, quotas de empresas, valores em contas bancárias e outros investimentos.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Nosso objetivo é simplificar o processo para a sua família, garantindo que a partilha seja feita com segurança jurídica e absoluto respeito às normas vigentes, buscando sempre a via mais adequada e econômica para o seu caso.
+                    </p>
+                    
+                    <div class="border-l-4 border-gold pl-5 py-2 bg-gray-50">
+                        <h4 class="font-bold text-primary text-base">Responsável Técnico</h4>
+                        <p class="text-gray-700 text-sm font-medium mb-1">Dr. João Victor Malucelli Harger - OAB/SC 50.373</p>
+                        <p class="text-gray-500 text-sm leading-relaxed">Ampla experiência na resolução de inventários judiciais e de cartório em Santa Catarina, priorizando a clareza e o diálogo familiar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="simulador" class="py-20 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-primary mb-3">Projeção de Custos do Inventário</h2>
+                <p class="text-gray-600 text-sm mb-2">A análise é gratuita, confidencial e instantânea.</p>
+            </div>
+
+            <div class="bg-white rounded shadow p-8 md:p-10 border border-gray-200">
+                <form id="simuladorForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                        
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Data do Falecimento <span class="text-red-500">*</span></label>
+                            <input type="date" id="dataObito" required class="w-full px-4 py-3 bg-white border border-gray-300 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                        </div>
+                        
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Valor Total da Herança (R$) <span class="text-red-500">*</span></label>
+                            <input type="number" id="valorPatrimonio" required min="1" placeholder="Ex: 850000" class="w-full px-4 py-3 bg-white border border-gray-300 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Estado dos Bens (UF)</label>
+                            <select id="estado" class="w-full px-4 py-3 bg-white border border-gray-300 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                                <option value="SC" selected>Santa Catarina (SC)</option>
+                                <option value="OUTRO">Outro Estado</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Quantidade de Herdeiros</label>
+                            <input type="number" id="qtdHerdeiros" min="1" placeholder="Ex: 2" class="w-full px-4 py-3 bg-white border border-gray-300 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Há cônjuge sobrevivente?</label>
+                            <select id="temConjuge" onchange="toggleRegime()" class="w-full px-4 py-3 bg-white border border-gray-300 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                                <option value="">Selecione...</option>
+                                <option value="sim">Sim</option>
+                                <option value="nao">Não</option>
+                            </select>
+                        </div>
+
+                        <div id="divRegime" class="space-y-1 hidden">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Regime de Bens</label>
+                            <select id="regimeBens" class="w-full px-4 py-3 bg-white border border-gray-300 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                                <option value="comunhao_parcial">Comunhão Parcial de Bens</option>
+                                <option value="comunhao_universal">Comunhão Universal de Bens</option>
+                                <option value="separacao">Separação de Bens</option>
+                                <option value="nao_sei" selected>Não sei informar</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Herdeiros menores de idade?</label>
+                            <select id="temMenor" class="w-full px-4 py-3 bg-white border border-gray-300 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                                <option value="">Selecione...</option>
+                                <option value="nao">Não</option>
+                                <option value="sim">Sim</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-500 uppercase">Todos estão de acordo?</label>
+                            <select id="temConsenso" class="w-full px-4 py-3 bg-white border border-gray-300 rounded focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                                <option value="">Selecione...</option>
+                                <option value="sim">Sim, acordo amigável</option>
+                                <option value="nao">Não há acordo total</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button type="button" onclick="calcularSimulacao()" class="w-full bg-primary text-white font-bold py-4 rounded hover:bg-gray-800 transition shadow">
+                        Processar Projeção
+                    </button>
+                </form>
+
+                <div id="avisoOutroEstado" class="hidden mt-8 p-6 bg-gray-50 border border-gray-200 rounded text-center fade-in">
+                    <p class="text-gray-700 font-medium">Atualmente, nossa ferramenta de projeção automática está disponível apenas para Santa Catarina. Por favor, utilize o formulário abaixo para solicitar uma projeção personalizada para o seu Estado.</p>
+                </div>
+
+                <div id="resultadoSimulacao" class="hidden mt-10 pt-8 border-t border-gray-200 fade-in">
+                    
+                    <div id="avisoIncompleto" class="hidden mb-6 p-4 bg-blue-50 border border-blue-200 text-blue-800 rounded text-sm">
+                        <i class="fas fa-info-circle mr-2"></i> Apresente mais informações no formulário acima (herdeiros, consenso, cônjuge) para obter uma projeção completa e exata. Os cálculos abaixo são uma estimativa base.
+                    </div>
+
+                    <div class="mb-6 text-sm text-gray-500 bg-gray-50 p-4 rounded border border-gray-200">
+                        <strong>Importante:</strong> Esta é apenas uma projeção matemática de custos e prazos baseada nas leis atuais. É essencial uma análise técnica por um advogado para confirmação exata dos valores e verificação de eventuais exceções e detalhes legais. Os prazos informados representam uma média estimada, e as circunstâncias de cada caso podem alterar significativamente as previsões de duração do processo.
+                    </div>
+
+                    <div id="alertaPrazo" class="mb-8 p-5 rounded flex items-start space-x-4 border-l-4">
+                        <div id="alertaIcon" class="mt-1 text-xl"></div>
+                        <div>
+                            <h4 id="alertaTitulo" class="font-bold text-lg mb-1"></h4>
+                            <p id="alertaTexto" class="text-sm font-medium opacity-90"></p>
+                        </div>
+                    </div>
+
+                    <div id="alertaRegime" class="hidden mb-6 p-4 bg-gray-100 border border-gray-300 rounded text-sm text-gray-700">
+                        <i class="fas fa-exclamation-circle mr-2"></i> Como o regime de bens não foi informado, utilizamos a <em>Comunhão Parcial de Bens</em> (regime legal padrão) para esta estimativa. Uma análise técnica confirmará o cenário exato da meação.
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-primary mb-6">Totalização Estimada</h3>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                        
+                        <div class="bg-white border border-gray-200 rounded shadow-sm overflow-hidden flex flex-col relative group">
+                            <div id="bgExtra" class="absolute inset-0 opacity-10 pointer-events-none transition-colors"></div>
+                            <div class="bg-gray-50 px-5 py-4 border-b border-gray-200 z-10">
+                                <div class="flex flex-col">
+                                    <h4 class="font-bold text-primary text-lg">Via Cartório (Extrajudicial)</h4>
+                                    <p id="avisoCartorio" class="text-[10px] uppercase font-bold text-amber-600 mt-1 hidden"></p>
+                                </div>
+                            </div>
+                            <div class="p-5 flex-grow z-10 space-y-3 text-sm">
+                                <div class="flex justify-between border-b border-dashed border-gray-200 pb-2">
+                                    <span class="text-gray-600">Valor da Herança:</span>
+                                    <span id="extVal" class="font-medium text-gray-800"></span>
+                                </div>
+                                <div id="extRowMeacao" class="hidden flex justify-between border-b border-dashed border-gray-200 pb-2">
+                                    <span class="text-gray-600">Meação (Parte do Cônjuge):</span>
+                                    <span id="extMeacao" class="font-bold text-gold"></span>
+                                </div>
+                                <div class="flex justify-between border-b border-dashed border-gray-200 pb-2">
+                                    <span class="text-gray-600">ITCMD Estimado (SC):</span>
+                                    <span id="extItcmd" class="font-medium text-gray-800"></span>
+                                </div>
+                                <div class="flex justify-between border-b border-dashed border-gray-200 pb-2">
+                                    <span class="text-gray-600">Alíquota Efetiva (ITCMD):</span>
+                                    <span id="extAliquota" class="font-medium text-gray-800"></span>
+                                </div>
+                                <div id="extRowMulta" class="hidden flex justify-between border-b border-dashed border-gray-200 pb-2">
+                                    <span class="text-orange-600 font-medium">Multa (Estimativa 20%):</span>
+                                    <span id="extMulta" class="font-bold text-orange-600"></span>
+                                </div>
+                                <div class="flex justify-between border-b border-dashed border-gray-200 pb-2">
+                                    <a href="https://www.tjsc.jus.br/documents/d/corregedoria-geral-da-justica/circularcgj643-2025-pdf" target="_blank" class="text-gold hover:underline font-medium" title="Tabela Oficial CGJ/SC">Emolumentos (Cartório SC): <i class="fas fa-external-link-alt text-[10px]"></i></a>
+                                    <span id="extCustas" class="font-medium text-gray-800"></span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-2">
+                                    <span class="text-gray-600">Prazo Médio Estimado:</span>
+                                    <span class="font-medium text-gray-800">Aprox. 3 meses</span>
+                                </div>
+                                <div class="flex justify-between items-center pt-2">
+                                    <span class="font-bold text-primary text-base">CUSTO TOTAL ESTIMADO:</span>
+                                    <span id="extTotal" class="font-bold text-primary text-lg"></span>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 px-5 py-4 border-t border-gray-200 z-10 mt-auto space-y-2">
+                                <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                                    <span class="text-xs text-gray-500 uppercase font-bold">Quinhão por Herdeiro:</span>
+                                    <span id="extPorHerdeiro" class="font-bold text-primary"></span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs text-gray-500 uppercase font-bold">Custo por Herdeiro:</span>
+                                    <span id="extCustoPorHerdeiro" class="font-bold text-primary"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border border-gray-200 rounded shadow-sm overflow-hidden flex flex-col relative group">
+                            <div id="bgJud" class="absolute inset-0 opacity-10 pointer-events-none transition-colors"></div>
+                            <div class="bg-gray-50 px-5 py-4 border-b border-gray-200 z-10">
+                                <div class="flex flex-col">
+                                    <h4 class="font-bold text-primary text-lg">Via Fórum (Judicial)</h4>
+                                </div>
+                            </div>
+                            <div class="p-5 flex-grow z-10 space-y-3 text-sm">
+                                <div class="flex justify-between border-b border-dashed border-gray-200 pb-2">
+                                    <span class="text-gray-600">Valor da Herança:</span>
+                                    <span id="judVal" class="font-medium text-gray-800"></span>
+                                </div>
+                                <div id="judRowMeacao" class="hidden flex justify-between border-b border-dashed border-gray-200 pb-2">
+                                    <span class="text-gray-600">Meação (Parte do Cônjuge):</span>
+                                    <span id="judMeacao" class="font-bold text-gold"></span>
+                                </div>
+                                <div class="flex justify-between border-b border-dashed border-gray-200 pb-2">
+                                    <span class="text-gray-600">ITCMD Estimado (SC):</span>
+                                    <span id="judItcmd" class="font-medium text-gray-800"></span>
+                                </div>
+                                <div class="flex justify-between border-b border-dashed border-gray-200 pb-2">
+                                    <span class="text-gray-600">Alíquota Efetiva (ITCMD):</span>
+                                    <span id="judAliquota" class="font-medium text-gray-800"></span>
+                                </div>
+                                <div id="judRowMulta" class="hidden flex justify-between border-b border-dashed border-gray-200 pb-2">
+                                    <span class="text-orange-600 font-medium">Multa (Estimativa 20%):</span>
+                                    <span id="judMulta" class="font-bold text-orange-600"></span>
+                                </div>
+                                <div class="flex justify-between border-b border-dashed border-gray-200 pb-2">
+                                    <a href="https://busca.tjsc.jus.br/buscatextual/integra.do?cdSistema=1&cdDocumento=187968&cdCategoria=1" target="_blank" class="text-gold hover:underline font-medium" title="Tabela Oficial TJSC">Custas Judiciais (TJSC): <i class="fas fa-external-link-alt text-[10px]"></i></a>
+                                    <span id="judCustas" class="font-medium text-gray-800"></span>
+                                </div>
+                                <div class="flex justify-between border-b border-gray-200 pb-2">
+                                    <span class="text-gray-600">Prazo Médio Estimado:</span>
+                                    <span class="font-medium text-gray-800">1 a 5 anos</span>
+                                </div>
+                                <div class="flex justify-between items-center pt-2">
+                                    <span class="font-bold text-primary text-base">CUSTO TOTAL ESTIMADO:</span>
+                                    <span id="judTotal" class="font-bold text-primary text-lg"></span>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 px-5 py-4 border-t border-gray-200 z-10 mt-auto space-y-2">
+                                <div class="flex justify-between items-center border-b border-gray-200 pb-2">
+                                    <span class="text-xs text-gray-500 uppercase font-bold">Quinhão por Herdeiro:</span>
+                                    <span id="judPorHerdeiro" class="font-bold text-primary"></span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs text-gray-500 uppercase font-bold">Custo por Herdeiro:</span>
+                                    <span id="judCustoPorHerdeiro" class="font-bold text-primary"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div id="boxViaExplicacao" class="hidden bg-gray-50 p-6 rounded mb-8 border border-gray-200">
+                        <h4 class="font-bold text-primary mb-2 text-sm uppercase">Análise do Caminho Adequado</h4>
+                        <p id="resViaExplicacao" class="text-sm text-gray-700"></p>
+                    </div>
+
+                </div>
+
+                <div id="contatoFormBox" class="hidden bg-primary rounded p-8 text-white mt-8 border-t-4 border-gold">
+                    <h4 class="text-xl font-bold mb-2">Solicitar Análise Técnica</h4>
+                    <p class="text-gray-300 text-sm mb-6">Envie suas informações para nossa equipe avaliar a viabilidade do seu caso e confirmar os detalhes legais.</p>
+                    
+                    <form action="https://formsubmit.co/rodrigo.tissot@bgtadvogados.com.br" method="POST" enctype="multipart/form-data" class="space-y-4">
+                        <input type="hidden" name="_cc" value="joao.harger@bgtadvogados.com.br">
+                        <input type="hidden" name="_subject" value="Solicitação de Análise de Inventário">
+                        <input type="hidden" id="dadosSimulacaoInput" name="Resumo_Simulacao" value="">
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input type="text" name="Nome" placeholder="Nome Completo" required class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded text-white text-sm focus:outline-none focus:border-gold">
+                            <input type="text" name="Telefone" placeholder="Telefone / WhatsApp" required class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded text-white text-sm focus:outline-none focus:border-gold">
+                        </div>
+                        <input type="email" name="Email" placeholder="E-mail" required class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded text-white text-sm focus:outline-none focus:border-gold">
+                        
+                        <div class="file-upload-wrapper bg-white/5 border border-dashed border-white/30 rounded p-4 text-center hover:bg-white/10 transition cursor-pointer">
+                            <input type="file" name="Documentos[]" multiple accept=".pdf, image/*" onchange="updateFileName(this)">
+                            <div id="uploadText" class="text-sm text-gray-300">
+                                <i class="fas fa-file-upload text-gold text-xl mb-2 block"></i>
+                                Anexar Documentos (Opcional - PDF ou Imagem, Máx 20MB)
+                            </div>
+                        </div>
+                        
+                        <div class="text-xs text-gray-400 mt-2">
+                            <p>Suas informações são tratadas de forma confidencial. Ao enviar, você consente com o tratamento de dados pessoais e concorda com nossa <a href="/politica-de-privacidade" class="underline hover:text-white">Política de Privacidade</a>.</p>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gold text-white font-bold tracking-wide py-3 rounded text-sm hover:bg-gold-hover transition">
+                            Enviar para Análise Técnica
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-primary mb-10 text-center">Perguntas Frequentes (FAQ)</h2>
+            <div class="space-y-3">
+                <details class="bg-gray-50 border border-gray-200 p-5 rounded cursor-pointer group">
+                    <summary class="font-semibold text-primary outline-none flex justify-between items-center">
+                        Qual o prazo legal para abrir o inventário em SC e quais as penalidades?
+                        <span class="text-gray-400 group-open:rotate-180 transition"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-gray-600 text-sm">A Lei Estadual determina o prazo de 60 dias corridos contados do óbito para a abertura do inventário. O descumprimento acarreta multa aplicada pela Secretaria da Fazenda de SC, equivalente a 20% do imposto (ITCMD) devido, além de juros.</p>
+                </details>
+                <details class="bg-gray-50 border border-gray-200 p-5 rounded cursor-pointer group">
+                    <summary class="font-semibold text-primary outline-none flex justify-between items-center">
+                        A família não tem dinheiro para as custas agora. O que fazer?
+                        <span class="text-gray-400 group-open:rotate-180 transition"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-gray-600 text-sm">É possível solicitar a venda de um bem do espólio (por Alvará Judicial ou rito próprio em cartório) especificamente para quitar os tributos e emolumentos do inventário.</p>
+                </details>
+                <details class="bg-gray-50 border border-gray-200 p-5 rounded cursor-pointer group">
+                    <summary class="font-semibold text-primary outline-none flex justify-between items-center">
+                        As dívidas do falecido passam para os filhos?
+                        <span class="text-gray-400 group-open:rotate-180 transition"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-gray-600 text-sm">Não. As dívidas são pagas com o próprio patrimônio deixado (a herança). Os herdeiros não respondem com seu patrimônio pessoal por dívidas que ultrapassem o valor deixado pelo falecido.</p>
+                </details>
+                <details class="bg-gray-50 border border-gray-200 p-5 rounded cursor-pointer group">
+                    <summary class="font-semibold text-primary outline-none flex justify-between items-center">
+                        Se houver testamento, o inventário precisa ser judicial?
+                        <span class="text-gray-400 group-open:rotate-180 transition"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-gray-600 text-sm">Atualmente, em Santa Catarina, é permitido fazer o inventário em cartório mesmo existindo testamento, desde que todos os herdeiros sejam maiores, concordem entre si, e haja uma autorização prévia do juiz confirmando a validade do testamento.</p>
+                </details>
+                <details class="bg-gray-50 border border-gray-200 p-5 rounded cursor-pointer group">
+                    <summary class="font-semibold text-primary outline-none flex justify-between items-center">
+                        Como funciona o imposto se houver imóveis em outros Estados?
+                        <span class="text-gray-400 group-open:rotate-180 transition"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-gray-600 text-sm">Para os imóveis, o imposto (ITCMD) é pago para o Estado onde o imóvel está localizado. Já para dinheiro e veículos, o imposto é pago para o Estado onde o falecido morava por último.</p>
+                </details>
+                <details class="bg-gray-50 border border-gray-200 p-5 rounded cursor-pointer group">
+                    <summary class="font-semibold text-primary outline-none flex justify-between items-center">
+                        Empresas (quotas) entram no inventário?
+                        <span class="text-gray-400 group-open:rotate-180 transition"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-gray-600 text-sm">Sim. A participação em empresas faz parte da herança. Uma avaliação cuidadosa do contrato social e do balanço da empresa é necessária para calcular corretamente o imposto sem pagar valores abusivos.</p>
+                </details>
+                <details class="bg-gray-50 border border-gray-200 p-5 rounded cursor-pointer group">
+                    <summary class="font-semibold text-primary outline-none flex justify-between items-center">
+                        E se um herdeiro não quiser assinar?
+                        <span class="text-gray-400 group-open:rotate-180 transition"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-gray-600 text-sm">Sem acordo, o inventário em cartório não é possível de imediato. Nosso escritório atua ativamente para tentar construir um acordo amigável entre os herdeiros, viabilizando a via extrajudicial. Caso a discordância persista, será necessário seguir pela via judicial.</p>
+                </details>
+                <details class="bg-gray-50 border border-gray-200 p-5 rounded cursor-pointer group">
+                    <summary class="font-semibold text-primary outline-none flex justify-between items-center">
+                        Seguro de Vida e VGBL entram no inventário?
+                        <span class="text-gray-400 group-open:rotate-180 transition"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-gray-600 text-sm">O Seguro de Vida não entra no inventário e é pago diretamente aos beneficiários (isento de ITCMD). A previdência VGBL também costuma ser liberada sem inventário na maioria das situações, pois tem natureza de seguro.</p>
+                </details>
+                <details class="bg-gray-50 border border-gray-200 p-5 rounded cursor-pointer group">
+                    <summary class="font-semibold text-primary outline-none flex justify-between items-center">
+                        É possível vender apenas um bem antes de terminar o inventário?
+                        <span class="text-gray-400 group-open:rotate-180 transition"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-gray-600 text-sm">Sim, através de um pedido específico (Alvará), desde que os bens restantes sejam suficientes para garantir o pagamento de impostos e dívidas pendentes.</p>
+                </details>
+                <details class="bg-gray-50 border border-gray-200 p-5 rounded cursor-pointer group">
+                    <summary class="font-semibold text-primary outline-none flex justify-between items-center">
+                        Todos os herdeiros precisam do mesmo advogado?
+                        <span class="text-gray-400 group-open:rotate-180 transition"><i class="fas fa-chevron-down"></i></span>
+                    </summary>
+                    <p class="mt-4 text-gray-600 text-sm">Não é obrigatório, mas se houver acordo amigável, todos podem usar o mesmo escritório. Isso agiliza o processo e reduz bastante os custos para a família.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gray-50 border-t border-gray-200">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold text-primary mb-2">Deseja falar diretamente conosco?</h3>
+            <p class="text-sm text-gray-600 mb-8">Preencha os dados abaixo e entraremos em contato.</p>
+            
+            <form action="https://formsubmit.co/rodrigo.tissot@bgtadvogados.com.br" method="POST" class="bg-white p-8 rounded shadow border border-gray-200 space-y-4 text-left">
+                <input type="hidden" name="_cc" value="joao.harger@bgtadvogados.com.br">
+                <input type="hidden" name="_subject" value="Contato Direto - Sucessões">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" name="Nome" placeholder="Nome Completo" required class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded focus:border-primary focus:outline-none">
+                    <input type="text" name="Telefone" placeholder="Telefone / WhatsApp" required class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded focus:border-primary focus:outline-none">
+                </div>
+                <input type="email" name="Email" placeholder="E-mail" required class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded focus:border-primary focus:outline-none">
+                <textarea name="Mensagem" rows="3" placeholder="Mensagem (Opcional)" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded focus:border-primary focus:outline-none"></textarea>
+                
+                <button type="submit" class="w-full bg-primary text-white font-bold py-3 rounded hover:bg-gray-800 transition">
+                    Enviar Mensagem
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-12 text-center text-sm">
+        <div class="max-w-7xl mx-auto px-4">
+            <h4 class="font-bold text-gray-200 mb-3 text-xl tracking-wide">BGT Advogados</h4>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6 mb-6">
+                <p><i class="fas fa-map-marker-alt text-gold mr-2"></i> Florianópolis, SC</p>
+                <p><i class="fas fa-id-card text-gold mr-2"></i> CNPJ: 31.547.411/0001-83</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6 mb-8">
+                <p><i class="fab fa-whatsapp text-gold mr-2 text-lg"></i> <a href="https://wa.me/554832093104" target="_blank" class="text-gray-300 hover:text-white transition font-semibold">(48) 3209-3104</a></p>
+                <p><i class="fas fa-globe text-gold mr-2"></i> <a href="https://www.bgtadvogados.com.br" target="_blank" class="hover:text-white transition">www.bgtadvogados.com.br</a></p>
+            </div>
+
+            <p class="mb-4 text-gray-500">Responsável Técnico: Dr. João Victor Malucelli Harger (OAB/SC 50.373)</p>
+            
+            <div class="space-x-4 mb-4">
+                <a href="/politica-de-privacidade" class="text-xs hover:text-white underline transition">Política de Privacidade e Termos de Uso</a>
+            </div>
+            
+            <p class="text-xs opacity-50 border-t border-gray-800 pt-6 mt-4">&copy; 2026 BGT Advogados. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="lgpd-banner">
+        <div class="text-sm pr-4">
+            Utilizamos cookies e tratamos dados de acordo com nossa <a href="/politica-de-privacidade" class="text-gold hover:underline">Política de Privacidade</a> para melhorar sua experiência.
+        </div>
+        <button onclick="document.getElementById('lgpd-banner').style.display='none'" class="bg-gold text-white px-5 py-2 rounded font-bold text-sm hover:bg-gold-hover transition shadow">
+            Aceitar
+        </button>
+    </div>
+
+    <a href="#simulador" id="floatingBtn" class="fixed bottom-6 right-6 z-[9000] bg-gold text-white shadow-2xl rounded-full px-5 py-4 flex items-center justify-center hover:bg-gold-hover transition-all duration-300 opacity-0 translate-y-10 pointer-events-none" title="Acessar Simulador">
+        <i class="fas fa-calculator text-xl"></i>
+        <span class="hidden md:inline font-bold tracking-wide text-sm ml-2">Simular Custos</span>
+    </a>
+
+    <script>
+        // Lógica do Botão Flutuante
+        window.addEventListener('scroll', function() {
+            const btn = document.getElementById('floatingBtn');
+            if (window.scrollY > 400) {
+                btn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                btn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            } else {
+                btn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                btn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            }
+        });
+
+        const formataBr = (valor) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor);
+
+        function toggleRegime() {
+            const conjuge = document.getElementById('temConjuge').value;
+            const divRegime = document.getElementById('divRegime');
+            if (conjuge === 'sim') { divRegime.classList.remove('hidden'); } 
+            else { divRegime.classList.add('hidden'); }
+        }
+
+        function updateFileName(input) {
+            const textEl = document.getElementById('uploadText');
+            if (input.files && input.files.length > 0) {
+                textEl.innerHTML = `<i class="fas fa-check text-gold text-xl mb-2 block"></i> ${input.files.length} arquivo(s) anexado(s)`;
+            }
+        }
+
+        function calcularSimulacao() {
+            const dataObito = document.getElementById('dataObito').value;
+            const valorTotal = parseFloat(document.getElementById('valorPatrimonio').value);
+            const uf = document.getElementById('estado').value;
+            
+            const herdeirosInput = document.getElementById('qtdHerdeiros').value;
+            const temConjuge = document.getElementById('temConjuge').value;
+            const regime = document.getElementById('regimeBens').value;
+            const temMenor = document.getElementById('temMenor').value;
+            const temConsenso = document.getElementById('temConsenso').value;
+
+            if (!dataObito || !valorTotal) {
+                alert("Por favor, preencha a Data do Falecimento e o Valor Total da Herança.");
+                return;
+            }
+
+            if (uf !== 'SC') {
+                document.getElementById('avisoOutroEstado').classList.remove('hidden');
+                document.getElementById('resultadoSimulacao').classList.add('hidden');
+                document.getElementById('contatoFormBox').classList.remove('hidden');
+                return;
+            } else {
+                document.getElementById('avisoOutroEstado').classList.add('hidden');
+            }
+
+            document.getElementById('resultadoSimulacao').classList.remove('hidden');
+            document.getElementById('contatoFormBox').classList.remove('hidden');
+
+            const completos = (herdeirosInput && temConjuge && temMenor && temConsenso);
+            if(!completos) {
+                document.getElementById('avisoIncompleto').classList.remove('hidden');
+            } else {
+                document.getElementById('avisoIncompleto').classList.add('hidden');
+            }
+
+            if (temConjuge === 'sim' && regime === 'nao_sei') {
+                document.getElementById('alertaRegime').classList.remove('hidden');
+            } else {
+                document.getElementById('alertaRegime').classList.add('hidden');
+            }
+
+            // Prazos e Alertas Adaptados
+            const diasRestantes = 60 - Math.ceil(Math.abs(new Date() - new Date(dataObito)) / (1000 * 60 * 60 * 24));
+            let alertaEl = document.getElementById('alertaPrazo');
+            let iconEl = document.getElementById('alertaIcon');
+            let titEl = document.getElementById('alertaTitulo');
+            let txtEl = document.getElementById('alertaTexto');
+            let temMulta = false;
+            
+            alertaEl.className = "mb-8 p-5 rounded flex items-start space-x-4 border-l-4"; 
+            
+            if (diasRestantes < 0) {
+                alertaEl.classList.add('bg-red-50', 'border-red-500', 'text-red-900');
+                iconEl.innerHTML = '<i class="fas fa-exclamation-triangle text-red-500"></i>';
+                titEl.innerText = "Prazo Ultrapassado";
+                txtEl.innerHTML = "O prazo legal de 60 dias para a abertura do inventário encerrou. <strong>Pode haver a incidência de multa de até 20%</strong> sobre o ITCMD. Entre em contato com a maior brevidade possível para protocolar o inventário.";
+                temMulta = true;
+            } else if (diasRestantes <= 15) {
+                alertaEl.classList.add('bg-orange-50', 'border-orange-500', 'text-orange-900');
+                iconEl.innerHTML = '<i class="fas fa-clock text-orange-500"></i>';
+                titEl.innerText = "Prazo Apertado";
+                txtEl.innerHTML = `Restam apenas <strong>${diasRestantes} dias</strong> para a abertura do inventário. Após esse prazo, pode haver a incidência de multa de até 20% sobre o imposto. Entre em contato com brevidade para que possamos auxiliar a evitar encargos adicionais.`;
+            } else {
+                alertaEl.classList.add('bg-green-50', 'border-green-500', 'text-green-900');
+                iconEl.innerHTML = '<i class="fas fa-check-circle text-green-500"></i>';
+                titEl.innerText = "No Prazo";
+                txtEl.innerHTML = `Restam confortáveis <strong>${diasRestantes} dias</strong> para a abertura do inventário sem o risco de incidência da multa administrativa do Estado.`;
+            }
+
+            let meacao = 0;
+            let herdeirosNum = herdeirosInput ? parseInt(herdeirosInput) : 1;
+            
+            if (temConjuge === 'sim') {
+                if (regime === 'separacao') {
+                    herdeirosNum += 1;
+                } else {
+                    meacao = valorTotal * 0.5;
+                }
+            }
+            let patrimonioPartilhavel = valorTotal - meacao;
+            
+            // ITCMD MATEMATICAMENTE PROGRESSIVO
+            function calcITCMD(valor) {
+                let imposto = 0;
+                let base7 = Math.max(0, valor - 150000);
+                let base5 = Math.max(0, Math.min(valor, 150000) - 50000);
+                let base3 = Math.max(0, Math.min(valor, 50000) - 20000);
+                let base1 = Math.max(0, Math.min(valor, 20000));
+
+                imposto = (base7 * 0.07) + (base5 * 0.05) + (base3 * 0.03) + (base1 * 0.01);
+                return imposto;
+            }
+
+            let quinhaoMedio = patrimonioPartilhavel / herdeirosNum;
+            let itcmdMedioPorHerdeiro = calcITCMD(quinhaoMedio);
+            let itcmdTotal = itcmdMedioPorHerdeiro * herdeirosNum;
+            let valorMulta = temMulta ? (itcmdTotal * 0.20) : 0;
+            
+            // Calculo da Alíquota Efetiva
+            let aliquotaEfetivaNum = patrimonioPartilhavel > 0 ? (itcmdTotal / patrimonioPartilhavel) * 100 : 0;
+            let textoAliquota = aliquotaEfetivaNum.toFixed(2).replace('.', ',') + '%';
+
+            // Custas Emolumentos Inventário SC (Circular 643/2025)
+            let custasExtra = 0;
+            if (valorTotal <= 93295.70) custasExtra = 708.91;
+            else if (valorTotal <= 198501.48) custasExtra = 1417.83;
+            else if (valorTotal <= 529337.26) custasExtra = 2835.73;
+            else custasExtra = 4253.50; // Teto SC para Inventários extrajudiciais
+
+            // Custas Judiciais TJSC Atualizado
+            let custasJud = valorTotal * 0.028;
+            if (custasJud > 7080.89) custasJud = 7080.89; // Teto TJSC cravado
+
+            let totalExtra = itcmdTotal + valorMulta + custasExtra;
+            let totalJud = itcmdTotal + valorMulta + custasJud;
+
+            // Calculo custo por herdeiro
+            let custoPorHerdeiroExtra = totalExtra / herdeirosNum;
+            let custoPorHerdeiroJud = totalJud / herdeirosNum;
+
+            const preencherCard = (prefix, val, itcmd, aliquotaText, multa, custas, total, quinhaoText, custoText) => {
+                document.getElementById(prefix+'Val').innerText = formataBr(val);
+                document.getElementById(prefix+'Itcmd').innerText = formataBr(itcmd);
+                document.getElementById(prefix+'Aliquota').innerText = aliquotaText;
+                
+                if(meacao > 0) {
+                    document.getElementById(prefix+'RowMeacao').classList.remove('hidden');
+                    document.getElementById(prefix+'Meacao').innerText = formataBr(meacao);
+                } else {
+                    document.getElementById(prefix+'RowMeacao').classList.add('hidden');
+                }
+                
+                if(temMulta) {
+                    document.getElementById(prefix+'RowMulta').classList.remove('hidden');
+                    document.getElementById(prefix+'Multa').innerText = formataBr(multa);
+                } else {
+                    document.getElementById(prefix+'RowMulta').classList.add('hidden');
+                }
+
+                document.getElementById(prefix+'Custas').innerText = formataBr(custas);
+                document.getElementById(prefix+'Total').innerText = formataBr(total);
+                document.getElementById(prefix+'PorHerdeiro').innerText = quinhaoText;
+                document.getElementById(prefix+'CustoPorHerdeiro').innerText = custoText;
+            };
+
+            let textoQuinhao = completos ? `Aprox. ${formataBr(quinhaoMedio)}` : "Dados insuficientes";
+            let textoCustoExtra = completos ? `Aprox. ${formataBr(custoPorHerdeiroExtra)}` : "Dados insuficientes";
+            let textoCustoJud = completos ? `Aprox. ${formataBr(custoPorHerdeiroJud)}` : "Dados insuficientes";
+            
+            preencherCard('ext', valorTotal, itcmdTotal, textoAliquota, valorMulta, custasExtra, totalExtra, textoQuinhao, textoCustoExtra);
+            preencherCard('jud', valorTotal, itcmdTotal, textoAliquota, valorMulta, custasJud, totalJud, textoQuinhao, textoCustoJud);
+
+            let bgE = document.getElementById('bgExtra'); let bgJ = document.getElementById('bgJud');
+            let avisoC = document.getElementById('avisoCartorio');
+            let expl = document.getElementById('boxViaExplicacao');
+            let txtExpl = document.getElementById('resViaExplicacao');
+
+            avisoC.className = "text-[10px] uppercase font-bold text-amber-600 mt-1 hidden";
+            bgE.className = "absolute inset-0 opacity-10 pointer-events-none transition-colors";
+            bgJ.className = "absolute inset-0 opacity-10 pointer-events-none transition-colors";
+
+            if (completos) {
+                expl.classList.remove('hidden');
+                
+                if (temMenor === 'sim') {
+                    bgE.classList.add('bg-yellow-400'); bgJ.classList.add('bg-green-400');
+                    avisoC.innerText = "Via não aplicável (Herdeiros Menores)"; avisoC.classList.remove('hidden');
+                    txtExpl.innerHTML = "Como há herdeiros menores de idade, a lei exige que o inventário seja feito pelo juiz (via judicial) para proteger os direitos deles. Faremos o possível para que o processo seja o mais ágil possível no Fórum.";
+                } else if (temConsenso === 'nao') {
+                    bgE.classList.add('bg-yellow-400'); bgJ.classList.add('bg-yellow-400');
+                    avisoC.innerText = "Demanda Negociação (Sem Consenso)"; avisoC.classList.remove('hidden');
+                    txtExpl.innerHTML = "Como não há acordo entre todos os herdeiros no momento, a equipe trabalhará para buscar o consenso, se for do interesse da família, para possibilitar a via extrajudicial. Caso contrário, será necessário seguir pela via judicial.";
+                } else {
+                    bgE.classList.add('bg-green-400'); bgJ.classList.add('bg-gray-200');
+                    txtExpl.innerHTML = "Excelente cenário. Como todos são maiores e estão de acordo, o inventário pode ser feito diretamente no cartório (extrajudicial). Isso torna tudo muito mais rápido e prático para a família.";
+                }
+            } else {
+                expl.classList.add('hidden');
+                bgE.classList.add('bg-gray-200'); bgJ.classList.add('bg-gray-200');
+            }
+
+            document.getElementById('dadosSimulacaoInput').value = `Valor: ${valorTotal} | Dias: ${diasRestantes}`;
+            
+            // Rolagem suave até o resultado após o processamento
+            setTimeout(() => {
+                document.getElementById('resultadoSimulacao').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+    </script>
+</body>
+</html>
